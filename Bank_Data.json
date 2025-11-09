@@ -1,4 +1,16 @@
 [
+   {
+    "isActive": false,
+    "balance": "$1,280.14",
+    "age": 31,
+    "eyeColor": "green",
+    "name": "Sanskruti",
+    "gender": "female",
+    "company": "COMTREK",
+    "email": "bettieeaton@comtrek.com",
+    "phone": "+1 (861) 460-2317",
+    "address": "203 Allen Avenue, Elrama, North Carolina, 4453"
+  },
   {
     "isActive": false,
     "balance": "$1,280.14",
