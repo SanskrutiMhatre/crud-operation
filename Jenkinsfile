@@ -47,7 +47,7 @@ pipeline {
                     sh "docker rm -f ${CONTAINER_NAME} || true"
 
                     // Run the new container
-                    sh "docker run -d -p 8080:5000 --name ${CONTAINER_NAME} ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest"
+                    sh "docker run -d -p 8081:5000 --name ${CONTAINER_NAME} ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest"
                 }
             }
         }
