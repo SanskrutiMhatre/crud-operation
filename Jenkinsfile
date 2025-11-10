@@ -39,18 +39,23 @@ pipeline {
             }
         }
 
-        stage('Deploy Container') {
-            steps {
-                script {
-                    echo '🚀 Deploying container...'
-                    // Stop and remove existing container (if any)
-                    sh "docker rm -f ${CONTAINER_NAME} || true"
+       stage('Deploy Container') {
+    steps {
+        script {
+            echo '🚀 Deploying container...'
 
-                    // Run the new container
-                    sh "docker run -d -p 8080:5000 --name ${CONTAINER_NAME} ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest"
-                }
-            }
+            // Stop and remove existing container (if any)
+            sh """
+                docker ps -q --filter "publish=8080" | xargs -r docker stop
+                docker rm -f ${CONTAINER_NAME} || true
+            """
+
+            // Run the new container
+            sh "docker run -d -p 8080:5000 --name ${CONTAINER_NAME} ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest"
         }
+    }
+}
+
     }
 
     post {
